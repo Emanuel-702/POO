@@ -1,0 +1,43 @@
+#pragma once
+#include<iostream>
+
+using namespace std;
+
+class Matrices {
+private:
+	int m, n;
+	double** elem;
+public:
+	Matrices(int m, int n) {
+		this->m = m;
+		this->n = n;
+		elem = new double* [m];
+		for (int i = 0; i < m; i++)
+			elem[i] = new double[n];
+	}
+public:
+	Matrices operator + (Matrices B) {
+		Matrices S(m, n);
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				S.elem[i][j] = elem[i][j] + B.elem[i][j];
+			}
+		}
+		return(S);
+	}
+public:
+	void leeMat() {
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				cin >> elem[i][j];
+			}
+		}
+	}
+	void ponMat() {
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				cout<< elem[i][j];
+			}
+		}
+	}
+};
